@@ -409,6 +409,8 @@ def artist(**kwargs):
         Axes that will be passed through without creating a new figure.
     uniform : unicode, optional
         Whether to create the figure with an equal aspect ratio.
+    constrained_layout : unicode, optional
+        Whether to use a constrained layout.
 
     Returns
     -------
@@ -422,7 +424,9 @@ def artist(**kwargs):
 
     axes = kwargs.get('axes')
     if axes is None:
-        figure = plt.figure(figsize=figure_size)
+        figure = plt.figure(
+            figsize=figure_size,
+            constrained_layout=kwargs.get('constrained_layout', False))
 
         return figure, figure.gca()
     else:
@@ -501,9 +505,11 @@ def render(**kwargs):
     transparent_background : bool, optional
         Whether to turn off the background patch. Default is *True*.
     title : unicode, optional
+        Axes title.
+    figure_title : unicode, optional
         Figure title.
     wrap_title : unicode, optional
-        Whether to wrap the figure title. Default is *True*.
+        Whether to wrap the axes and/or figure title. Default is *True*.
     x_label : unicode, optional
         *X* axis label.
     y_label : unicode, optional
@@ -534,6 +540,7 @@ def render(**kwargs):
             'legend_columns': 1,
             'transparent_background': True,
             'title': None,
+            'figure_title': None,
             'wrap_title': True,
             'x_label': None,
             'y_label': None,
@@ -552,6 +559,8 @@ def render(**kwargs):
 
     if settings.title:
         axes.set_title(settings.title, wrap=settings.wrap_title)
+    if settings.figure_title:
+        figure.suptitle(settings.figure_title, wrap=settings.wrap_title)
     if settings.x_label:
         axes.set_xlabel(settings.x_label)
     if settings.y_label:
