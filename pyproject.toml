@@ -72,6 +72,7 @@ sphinx_rtd_theme = { version = "*", optional = true }  # Development dependency.
 sphinxcontrib-bibtex = { version = "*", optional = true }  # Development dependency.
 toml = { version = "*", optional = true }  # Development dependency.
 tqdm = { version = "*", optional = true }
+trimesh = { version = "*", optional = true }
 twine = { version = "*", optional = true }  # Development dependency.
 yapf = { version = "0.23", optional = true }  # Development dependency.
 
@@ -93,6 +94,7 @@ sphinx_rtd_theme = "*"
 sphinxcontrib-bibtex = "*"
 toml = "*"
 tqdm = "*"
+trimesh = "*"
 twine = "*"
 yapf = "0.23"
 
@@ -118,6 +120,7 @@ development = [
     "yapf"
 ]
 graphviz = [ "pygraphviz" ]
+meshing = [ "trimesh" ]
 optional = [ "networkx", "pandas", "tqdm" ]
 plotting = [ "backports.functools_lru_cache", "matplotlib" ]
 read-the-docs = [
